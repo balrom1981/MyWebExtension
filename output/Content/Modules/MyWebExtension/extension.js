@@ -14,17 +14,12 @@ define(['@docsvision/webclient/Helpers/MessageBox/MessageBox', '@docsvision/webc
         validateTextBoxControl: validateTextBoxControl
     });
 
-    function validateDateTimeControl(typeCtrl, args) {
+    function validateDateTimeControl(typeCtrl) {
         var layout = typeCtrl.layout;
         var dateTimePicker1 = layout.controls.tryGet("beginDate");
         var dateTimePicker2 = layout.controls.tryGet("endDate2");
-        if (!dateTimePicker1 || !dateTimePicker2) {
-            MessageBox.MessageBox.ShowWarning("Не задана одна из дат командировки");
-            args.cancel;
-        }
         if (dateTimePicker1.params.value > dateTimePicker2.params.value) {
             MessageBox.MessageBox.ShowWarning("Дата начала командировки не может быть больше даты конца командировки");
-            args.cancel;
         }
     }
 
@@ -41,8 +36,9 @@ define(['@docsvision/webclient/Helpers/MessageBox/MessageBox', '@docsvision/webc
         var dateTimePicker2 = layout.controls.tryGet("beginDate").params.value;
         var dateTimePicker3 = layout.controls.tryGet("endDate2").params.value;
         var description = layout.controls.tryGet("textBox1").params.value;
-        messageBoxSvc.showInfo('Название карточки -' + nameOfCard + '\nДата создания - /' + dateTimePicker1 + '\nДата с - ' + dateTimePicker2 +
-            '\nДата по - ' + dateTimePicker3 + '\nОснование для поездки - ' + description);
+        var city = layout.controls.tryGet("Cities").params.value.name;
+        messageBoxSvc.showInfo('Название карточки -' + nameOfCard + '\nДата создания - ' + dateTimePicker1 + '\nДата с - ' + dateTimePicker2 +
+            '\nДата по - ' + dateTimePicker3 + '\nОснование для поездки - ' + description + '\nГород - ' + city);
     }
 
     var ShowInformationAboutCardHandler = /*#__PURE__*/Object.freeze({

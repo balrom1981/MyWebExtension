@@ -5,7 +5,7 @@ import { ICardSavingEventArgs } from "@docsvision/webclient/System/ICardSavingEv
 import { Layout } from "@docsvision/webclient/System/Layout";
 
 
-export function validateDateTimeControl(typeCtrl: DateTimePicker, args: CancelableEventArgs<ICardSavingEventArgs>) {
+export function validateDateTimeControl(typeCtrl: DateTimePicker) {
 
   const layout = typeCtrl.layout;
 
@@ -13,15 +13,9 @@ export function validateDateTimeControl(typeCtrl: DateTimePicker, args: Cancelab
   let dateTimePicker1 = layout.controls.tryGet<DateTimePicker>("beginDate");
   let dateTimePicker2 = layout.controls.tryGet<DateTimePicker>("endDate2");
 
-  if (!dateTimePicker1 || !dateTimePicker2) {
-    MessageBox.ShowWarning("Не задана одна из дат командировки");
-    args.cancel;
-  }
-
   
   
   if (dateTimePicker1.params.value>dateTimePicker2.params.value) {
         MessageBox.ShowWarning("Дата начала командировки не может быть больше даты конца командировки");
-        args.cancel;
     }
 }

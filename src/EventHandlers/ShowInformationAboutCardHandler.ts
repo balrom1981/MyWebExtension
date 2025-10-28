@@ -4,6 +4,7 @@ import { Layout } from "@docsvision/webclient/System/Layout";
 import { TextBox } from "@docsvision/webclient/Platform/TextBox";
 import { $MessageBox } from "@docsvision/webclient/System/$MessageBox";
 import { CustomButton } from "@docsvision/webclient/Platform/CustomButton";
+import { DirectoryDesignerRow } from "@docsvision/webclient/BackOffice/DirectoryDesignerRow";
 
 
 export function showInformationAboutCard(typeCtrl: CustomButton) {
@@ -17,9 +18,9 @@ export function showInformationAboutCard(typeCtrl: CustomButton) {
   let dateTimePicker2 = layout.controls.tryGet<DateTimePicker>("beginDate").params.value;
   let dateTimePicker3 = layout.controls.tryGet<DateTimePicker>("endDate2").params.value;
   let description = layout.controls.tryGet<TextBox>("textBox1").params.value;
+  let city = layout.controls.tryGet<DirectoryDesignerRow>("Cities").params.value.name;
 
-  messageBoxSvc.showInfo('Название карточки -'+nameOfCard+'\nДата создания - /'+dateTimePicker1+'\nДата с - '+dateTimePicker2 +
-    '\nДата по - '+dateTimePicker3+'\nОснование для поездки - '+description);
-
+  messageBoxSvc.showInfo('Название карточки -'+nameOfCard+'\nДата создания - '+dateTimePicker1+'\nДата с - '+dateTimePicker2 +
+    '\nДата по - '+dateTimePicker3+'\nОснование для поездки - '+description+'\nГород - ' + city);
   
 }
