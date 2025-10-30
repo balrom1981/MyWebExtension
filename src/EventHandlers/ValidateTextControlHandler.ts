@@ -10,7 +10,7 @@ export function validateTextBoxControl(sender: Layout, args: CancelableEventArgs
 
     let controlText = textBox.params.value;
     if (!controlText || controlText.length === 0) {
-        MessageBox.ShowWarning('Текст контрола пуст');
+        MessageBox.ShowWarning('Поле обязательное к заполнению');
         args.cancel();
     }
 }

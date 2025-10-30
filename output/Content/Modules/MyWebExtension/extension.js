@@ -4,7 +4,7 @@ define(['@docsvision/webclient/Helpers/MessageBox/MessageBox', '@docsvision/webc
         var textBox = sender.controls.textBox1;
         var controlText = textBox.params.value;
         if (!controlText || controlText.length === 0) {
-            MessageBox.MessageBox.ShowWarning('Текст контрола пуст');
+            MessageBox.MessageBox.ShowWarning('Поле обязательное к заполнению');
             args.cancel();
         }
     }
